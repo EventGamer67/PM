@@ -9,11 +9,11 @@ class EditActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
-        findViewById<EditText>(R.id.newtext).setText(DataManager.messages[intent.getIntExtra("index",0)].text)
+        findViewById<EditText>(R.id.newtext).setText(DataManager.messages[intent.getIntExtra("index",0)].name)
     }
 
     fun save(view: View) {
-        DataManager.messages[intent.getIntExtra("index",0)].text = findViewById<EditText>(R.id.newtext).text.toString()
+        DataManager.messages[intent.getIntExtra("index",0)].name = findViewById<EditText>(R.id.newtext).text.toString()
         onBackPressed()
         finish()
     }

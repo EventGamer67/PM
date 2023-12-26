@@ -6,30 +6,119 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/text"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="message">
-        </TextView>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:id="@+id/delete"
-            android:text="-"
+            android:orientation="horizontal"
             android:layout_height="wrap_content">
-        </Button>
 
-        <Button
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="name">
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="phone">
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="balance">
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="active">
+                </TextView>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="match_parent">
+            </Space>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="message">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="message">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="message">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="state">
+                </TextView>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:id="@+id/edit"
-            android:text="edit"
             android:layout_height="wrap_content">
-        </Button>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:id="@+id/delete"
+                android:text="-"
+                android:layout_height="wrap_content">
+            </Button>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:id="@+id/edit"
+                android:text="edit"
+                android:layout_height="wrap_content">
+            </Button>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:id="@+id/state"
+                android:text="state"
+                android:layout_height="wrap_content">
+            </Button>
+
+        </LinearLayout>
 
     </LinearLayout>
 

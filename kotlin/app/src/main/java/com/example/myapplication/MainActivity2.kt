@@ -11,6 +11,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
+import org.json.JSONArray
+import org.json.JSONObject
 
 class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +27,7 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     fun add(view:View){
-        DataManager.messages.add(Item(text = "sample"))
+        DataManager.messages.add(Item(name = "namae", phone = "phone", balance = -1, active = true))
         refresh()
     }
 
@@ -56,7 +58,10 @@ class MainActivity2 : AppCompatActivity() {
         itemList.removeAllViews()
         for(i in DataManager.messages){
             var tile = layoutInflater.inflate(R.layout.tile,itemList,false)
-            tile.findViewById<TextView>(R.id.text).setText(i.text);
+            tile.findViewById<TextView>(R.id.name).setText(i.name);
+            tile.findViewById<TextView>(R.id.balance).setText(i.balance.toString());
+            tile.findViewById<TextView>(R.id.phone).setText(i.phone);
+            tile.findViewById<TextView>(R.id.active).setText(i.active.toString());
             var btn : Button = tile.findViewById<Button>(R.id.delete)
             btn.setOnClickListener {
                 delete(item = i);
@@ -69,6 +74,21 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     fun send(view: View) {
-        DataManager.sendData(data = "test",context = this)
+
+        var jsonobj = JSONObject()
+        var jsonarray = JSONArray()
+
+        for(i in DataManager.messages){
+            var json = JSONObject()
+            json.put("name",i.name);
+            json.put("phone",i.phone);
+            json.put("balance",i.balance);
+            json.put("active",i.active);
+            jsonarray.put(json)
+        }
+        jsonobj.put("items",jsonarray)
+        jsonobj.put("type","set")
+
+        DataManager.sendData(data = jsonobj.toString(),context = this)
     }
 }
