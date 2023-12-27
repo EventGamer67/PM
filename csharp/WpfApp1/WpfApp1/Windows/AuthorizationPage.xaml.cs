@@ -14,18 +14,28 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Service;
 
-namespace WpfApp1
+namespace WpfApp1.Windows
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AuthorizationPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AuthorizationPage : Page
     {
-        public MainWindow()
+        public AuthorizationPage()
         {
             InitializeComponent();
-            Service.Manager.window = win;
-            win.Content = new Windows.AuthorizationPage();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (Service.Manager.login(pass: pass.Text, name: name.Text))
+            {
+                Manager.window.Content = new MainPage();
+            }
+            else
+            {
+                MessageBox.Show("unlogin");
+            }
         }
     }
 }
