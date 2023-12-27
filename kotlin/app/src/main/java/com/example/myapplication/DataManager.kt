@@ -21,11 +21,6 @@ class DataManager {
 
         fun connect(context: Context){
             socket = Socket("10.0.2.2",8888)
-//            var out = socket.getOutputStream()
-//            out.bufferedWriter().use { it.write("test json string") }
-//            out.close()
-//            socket.close()
-//            Toast.makeText(context,"sended",Toast.LENGTH_SHORT)
         }
 
         fun sendData(data:String,context:Context) {

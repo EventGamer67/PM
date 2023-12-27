@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,11 +38,14 @@ namespace WpfApp1.Windows
         {
             try
             {
+                string sample = "{\"items\":[{\"name\":\"hello\",\"phone\":\"sample\",\"balance\":\"123\",\"active\":\"True\"}]}"; ;
                 (string res, string data) = await Service.SoketsManager.RequestData("get", "get");
-                var items = JsonConvert.DeserializeObject(res)[["items"];
-                JsonConvert.DeserializeObject<Item>(data);
-                
+                JObject jsonObject = JObject.Parse(sample);
 
+                JArray itemsArray = (JArray)jsonObject["items"];
+                List<Item> itemList = itemsArray.Select(item => item.ToObject<Item>()).ToList();
+
+                MessageBox.Show(itemList[0].name);
             }
             catch (Exception ex) 
             {
